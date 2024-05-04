@@ -1,4 +1,4 @@
-package com.example.knownyc
+package com.example.knownyc.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
