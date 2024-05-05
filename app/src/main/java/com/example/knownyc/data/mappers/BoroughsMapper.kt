@@ -20,7 +20,7 @@ suspend fun boroughsMapper(
             boroCode = obj.getString("borough").first(),
             name = obj.getString("shortName"),
             longName = obj.getString("fullName"),
-            image = localAssetsProvider.getDrawableResourceId(obj.getString("imageFileName")),
+            image = localAssetsProvider.getDrawableResourceId(obj.getString("imageFilename")),
         )
         boroughs.add(borough)
     }

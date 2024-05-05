@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.knownyc.presentation.ui.navigation.AppNavigationGraph
 import com.example.knownyc.presentation.ui.theme.KnowNYCTheme
+import com.example.knownyc.presentation.ui.util.AppEvents
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,6 +18,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            AppEvents(context = this)
             KnowNYCTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
