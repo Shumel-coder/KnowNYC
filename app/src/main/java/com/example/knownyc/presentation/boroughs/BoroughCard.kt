@@ -84,5 +84,9 @@ fun BoroughCard(
 @Preview
 @Composable
 fun BoroughCardPreview() {
-    BoroughCard(name = "The Bronx", painter = painterResource(id = R.drawable.bronx), contentDescription = "" )
+    BoroughCard(
+        name = "The Bronx",
+        painter = painterResource(id = R.drawable.bronx),
+        contentDescription = "Image of The Bronx Zoo entrance"
+    )
 }
