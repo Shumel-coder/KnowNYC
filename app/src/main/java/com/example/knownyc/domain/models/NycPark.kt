@@ -1,5 +1,13 @@
 package com.example.knownyc.domain.models
 
-//data class NycPark()
+import androidx.annotation.DrawableRes
 
-//TODO: Project 2
+data class NycPark(
+    val borough: Char?,
+    val location: String?,
+    val signname: String?,
+    val waterfront: Boolean?,
+    val url: String?,
+)
+
+
