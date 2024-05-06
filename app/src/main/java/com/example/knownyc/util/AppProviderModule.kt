@@ -6,7 +6,9 @@ import com.example.knownyc.commons.TAG
 import com.example.knownyc.data.local.provider.AssetsProvider
 import com.example.knownyc.data.local.provider.AssetsProviderImpl
 import com.example.knownyc.data.local.repositories.BoroughsRepositoryImpl
+import com.example.knownyc.data.remote.repositories.NycParksRepositoryImpl
 import com.example.knownyc.domain.repositories.BoroughsRepository
+import com.example.knownyc.domain.repositories.NycParksRepository
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Binds
 import dagger.Module
@@ -33,17 +35,9 @@ abstract class AppProviderModule {
     @Singleton
     abstract fun boroughsRepositoryProvider(impl: BoroughsRepositoryImpl): BoroughsRepository
 
-//    @Binds
-//    @Singleton
-//    abstract fun boroughRepositoryProvider(impl: BoroughRepositoryImpl): BoroughRepository
-//
-//    @Binds
-//    @Singleton
-//    abstract fun nycParksRepositoryProvider(impl: com.lockerfish.knownyc.data.remote.NycParksRepositoryImpl): NycParksRepository
-//
-//    @Binds
-//    @Singleton
-//    abstract fun nycParksLocalRepositoryProvider(impl: com.lockerfish.knownyc.data.remote.NycParksRepositoryImpl): NycParksRepository
+    @Binds
+    @Singleton
+    abstract fun nycParksRepositoryProvider(impl: NycParksRepositoryImpl): NycParksRepository
 
     // API service
 //    companion object {

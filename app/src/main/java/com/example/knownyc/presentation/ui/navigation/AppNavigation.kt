@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.knownyc.presentation.boroughs.BoroughCardPreview
 import com.example.knownyc.presentation.boroughs.BoroughScreen
+import com.example.knownyc.presentation.parks.NycParkCardPreview
 
 @Composable
 fun AppNavigationGraph() {
@@ -24,7 +25,7 @@ fun AppNavigationGraph() {
         }
 
         composable(Routes.PARKS_SCREEN) {
-
+            NycParkCardPreview()
         }
     }
 }
