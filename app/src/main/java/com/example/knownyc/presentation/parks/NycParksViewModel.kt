@@ -7,6 +7,7 @@ import com.example.knownyc.commons.Either
 import com.example.knownyc.commons.Event
 import com.example.knownyc.commons.EventBus
 import com.example.knownyc.commons.TAG
+import com.example.knownyc.domain.models.Borough
 import com.example.knownyc.domain.repositories.NycParksRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,6 +27,7 @@ class NycParksViewModel @Inject constructor(
         Log.d(TAG, "ViewModel init: getting parks")
         getParks()
     }
+
 
     private fun getParks() {
         viewModelScope.launch {

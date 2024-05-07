@@ -33,7 +33,7 @@ fun BoroughsScreen(
                 contentDescription = borough.longName
             ) {
                 //navigate to selected Borough
-                Log.d(TAG, "clicked: ${borough.name}")
+                Log.d(TAG, "clicked: ${borough.name}, ${borough.boroCode}")
                 onBoroughClicked(borough.boroCode, borough.name)
             }
         }

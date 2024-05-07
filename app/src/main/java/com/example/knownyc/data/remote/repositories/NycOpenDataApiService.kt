@@ -9,7 +9,7 @@ interface NycOpenDataApiService {
 
     @GET("enfh-gkve.json")
     suspend fun getNycParks(
-//        @Query("borough") borough: String,
+        @Query("borough") borough: String,
         @Query("retired") retired: Boolean = false,
     ): List<NycParkResponse>
 
