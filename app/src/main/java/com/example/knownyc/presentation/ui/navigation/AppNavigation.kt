@@ -1,5 +1,7 @@
 package com.example.knownyc.presentation.ui.navigation
 
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -9,6 +11,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -19,6 +23,8 @@ import com.example.knownyc.presentation.boroughs.BoroughsScreen
 import com.example.knownyc.presentation.parks.NycParksScreen
 import com.example.knownyc.presentation.ui.util.scaffold.AppScaffold
 import com.example.knownyc.presentation.ui.util.scaffold.TitleText
+
+
 
 @Composable
 fun AppNavigationGraph() {
@@ -54,6 +60,8 @@ fun AppNavigationGraph() {
     val url = remember {
         mutableStateOf("")
     }
+
+
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             Log.d("nav", "nav destination changed to ${destination.route}")
@@ -106,8 +114,14 @@ fun AppNavigationGraph() {
                             type = NavType.StringType
                         },
                     ),
-                ) { backStackEntry ->
-                    NycParksScreen( onParkClicked = { url -> navController.navigate(url)},
+                ) {
+                    backStackEntry ->
+                    NycParksScreen(navController.context, onParkClicked = { url ->
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        val context = navController.context
+                        context.startActivity(intent)
+
+                    },
                         boroughCode = backStackEntry.arguments?.getString("borough")!!
                     )
                 }

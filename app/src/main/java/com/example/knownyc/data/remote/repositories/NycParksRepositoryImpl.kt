@@ -20,27 +20,21 @@ import com.example.knownyc.util.AppConstants
 import com.example.knownyc.util.AppProviderModule.Companion.nycOpenDataApiServiceProvider
 import org.json.JSONObject
 import javax.inject.Inject
+import javax.sql.DataSource
 
 class NycParksRepositoryImpl @Inject constructor(
-//    private val localAssetsProvider: AssetsProvider,
+    private val nycOpenDataApiService: NycOpenDataApiService,
 ) : NycParksRepository {
 
-//    private suspend fun loadJsonAndMapData() : List<NycParkResponse> {
-//        val json = loadJson()
-//        return parksMapper(json, localAssetsProvider)
-//    }
-////
-//    private suspend fun loadJson() : JSONObject {
-//        val jsonString = localAssetsProvider.getJsonData()
-//        return JSONObject(jsonString)
-//    }
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     override suspend fun getParks(): Either<AppError, List<NycParkResponse>> {
         Log.d(TAG, "assets provider loading parks from JSON file")
+        val data = nycOpenDataApiService.getNycParks()
+        Log.d(TAG, "${data.toString()}")
         return try {
             Either.Data(
-                nycOpenDataApiServiceProvider().getNycParks("?borough=Q")
+                nycOpenDataApiService.getNycParks()
             )
         } catch ( e : Exception) {
             Either.Error(

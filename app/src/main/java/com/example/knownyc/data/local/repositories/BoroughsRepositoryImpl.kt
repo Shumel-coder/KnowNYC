@@ -13,6 +13,7 @@ import com.example.knownyc.data.mappers.toError
 import com.example.knownyc.domain.models.Borough
 import com.example.knownyc.domain.repositories.BoroughsRepository
 import com.example.knownyc.util.AppConstants
+import com.example.knownyc.util.AppProviderModule
 import org.json.JSONObject
 import javax.inject.Inject
 

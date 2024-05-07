@@ -2,21 +2,22 @@ package com.example.knownyc.data.mappers
 
 import com.example.knownyc.data.local.provider.AssetsProvider
 import com.example.knownyc.data.models.NycParkResponse
+import com.example.knownyc.data.remote.repositories.NycOpenDataApiService
 import com.example.knownyc.domain.models.NycPark
 import org.json.JSONObject
 
 suspend fun parksMapper(
     jsonObj : JSONObject,
-    localAssetsProvider: AssetsProvider,
-) : List<NycPark> {
+    nycOpenDataApiService: NycOpenDataApiService,
+) : List<NycParkResponse> {
 
     val jsonArray = jsonObj.getJSONArray("parks")
 
-    val parks = mutableListOf<NycPark>()
+    val parks = mutableListOf<NycParkResponse>()
 
     for(i in 0 until jsonArray.length()) {
         val obj = jsonArray.getJSONObject(i)
-        val park = NycPark(
+        val park = NycParkResponse(
             borough = obj.getString("borough").first(),
             location = obj.getString("location"),
             signname = obj.getString("name"),
