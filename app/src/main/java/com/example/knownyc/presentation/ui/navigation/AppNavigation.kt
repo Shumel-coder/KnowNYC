@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -114,11 +115,16 @@ fun AppNavigationGraph() {
                     ),
                 ) {
                     backStackEntry ->
-                    NycParksScreen(navController.context, onParkClicked = { url ->
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                        val context = navController.context
-                        context.startActivity(intent)
-                    }, boroughCode = backStackEntry.arguments?.getString("borough")!!
+                    val selectedBorough = backStackEntry.arguments?.getString("borough") ?: ""
+                    NycParksScreen(
+                        navController.context,
+                        viewModel = hiltViewModel(),
+                        onParkClicked = { url ->
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            val context = navController.context
+                            context.startActivity(intent)
+                        },
+                        boroughCode = selectedBorough
 
                     )
                 }

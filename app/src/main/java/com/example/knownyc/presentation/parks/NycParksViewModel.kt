@@ -25,16 +25,15 @@ class NycParksViewModel @Inject constructor(
 
     init {
         Log.d(TAG, "ViewModel init: getting parks")
-        getParks()
     }
 
 
-    private fun getParks() {
+    fun getParks(borough : String) {
         viewModelScope.launch {
             _state.update {
                 it.copy(isLoading = true)
             }
-            when (val result = repository.getParks()) {
+            when (val result = repository.getParks(borough = borough)) {
                 is Either.Data -> {
                     Log.d(TAG, "successfully loaded parks data")
                     _state.update {

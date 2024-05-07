@@ -17,9 +17,9 @@ class NycParksRepositoryImpl @Inject constructor(
 
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-    override suspend fun getParks(): Either<AppError, List<NycParkResponse>> {
+    override suspend fun getParks(borough: String): Either<AppError, List<NycParkResponse>> {
         Log.d(TAG, "assets provider loading parks from JSON file")
-        val data = nycOpenDataApiService.getNycParks("X")
+        val data = nycOpenDataApiService.getNycParks(borough)
         Log.d(TAG, "${data.toString()}")
         return try {
             Either.Data(
